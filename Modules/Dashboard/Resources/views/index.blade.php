@@ -1,9 +1,19 @@
-@extends('dashboard::layouts.master')
+@extends('layouts.stisla.master')
 
 @section('content')
-    <h1>Hello World</h1>
+    <section class="section">
+        <div class="section-header">
+            <h1>{!! config('dashboard.name') !!}</h1>
+        </div>
 
-    <p>
-        This view is loaded from module: {!! config('dashboard.name') !!}
-    </p>
+        <div class="section-body">
+            <p>
+                This view is loaded from module: {!! config('dashboard.name') !!}
+            </p>
+        </div>
+    </section>
+@endsection
+
+@section('js')
+    {{-- custom js per page --}}
 @endsection
