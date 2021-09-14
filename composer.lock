@@ -37,8 +37,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Asm89\\Stack\\": "src/",
-                    "Modules\\": "Modules/"
+                    "Asm89\\Stack\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
