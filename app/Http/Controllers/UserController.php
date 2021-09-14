@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 use Image;
+use Session;
 
 class UserController extends Controller
 {
@@ -75,19 +76,24 @@ class UserController extends Controller
         // Handle the user upload of avatar
     	if($request->hasFile('avatar')){
             // hapus avatar yang lama
-            Storage::delete('uploads/avatars/'.$request->oldavatar);
+            // Storage::delete(storage_path('uploads/avatars/' . $request->oldavatar ));
             
     		$avatar = $request->file('avatar');
     		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-    		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+            // $img = Image::make($avatar)->resize(300, 300);
+            $path = Storage::putFile('uploads/avatars',$request->file('avatar'));
+    		// Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+    		// Image::make($avatar)->resize(300, 300)->save( storage_path('uploads/avatars/' . $filename ) );
 
     		$user = Auth::user();
-    		$user->avatar = $filename;
+    		$user->avatar = $path;
     		$user->save();
     	}
 
         Auth::user()->update($request->all());
-    	return view('layouts.stisla.profile', array('user' => Auth::user()) );
+        Session::flash('message', 'Data updated successfuly.'); 
+        Session::flash('alert-class', 'alert-warning'); 
+        return redirect('profile');
     }
 
     /**
@@ -98,23 +104,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Storage::delete('uploads/avatars/'.$id);
     }
 
-    public function update_avatar(Request $request){
-
-    	// Handle the user upload of avatar
-    	if($request->hasFile('avatar')){
-    		$avatar = $request->file('avatar');
-    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-    		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
-
-    		$user = Auth::user();
-    		$user->avatar = $filename;
-    		$user->save();
-    	}
-
-    	return view('layouts.stisla.profile', array('user' => Auth::user()) );
-
-    }
 }

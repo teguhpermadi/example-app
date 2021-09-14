@@ -7,6 +7,12 @@
     </div>
 
     <div class="section-body">
+        @if (session('message'))
+            <div class="alert {{ session('alert-class', 'alert-info') }}">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <h2 class="section-title">Hi, <span class="fw-bolder text-uppercase">{{ $user->name }}!</span></h2>
         <p class="section-lead">
             Change information about yourself on this page.
@@ -16,7 +22,7 @@
             <div class="col-12 col-md-12 col-lg-5">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset('uploads/avatars/'.$user->avatar) }}"
+                        <img alt="image" src="{{ Storage::url($user->avatar) }}"
                             class="rounded-circle profile-widget-picture">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">
