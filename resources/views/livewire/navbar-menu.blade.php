@@ -130,7 +130,7 @@
         </li>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="foto" src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}" class="rounded-circle mr-1 float-left">
+                <img alt="foto" src="{{ asset('storage/'.Auth::user()->avatar) }}" class="rounded-circle mr-1 float-left">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">

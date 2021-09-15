@@ -75,19 +75,19 @@ class UserController extends Controller
     {
         // Handle the user upload of avatar
     	if($request->hasFile('avatar')){
-            // hapus avatar yang lama
-            // Storage::delete(storage_path('uploads/avatars/' . $request->oldavatar ));
-            
+    		
     		$avatar = $request->file('avatar');
-    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-            // $img = Image::make($avatar)->resize(300, 300);
-            $path = Storage::putFile('uploads/avatars',$request->file('avatar'));
-    		// Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
-    		// Image::make($avatar)->resize(300, 300)->save( storage_path('uploads/avatars/' . $filename ) );
+    		$filename = 'uploads/avatars/' . time() . '.' . $avatar->getClientOriginalExtension();
+            
+            // resizing an uploaded file
+            Image::make($request->file('avatar'))->resize(300, 300)->save(public_path('storage/'.$filename));
 
     		$user = Auth::user();
-    		$user->avatar = $path;
+    		$user->avatar = $filename;
     		$user->save();
+
+            // hapus avatar yang lama
+            Storage::delete($request->oldavatar);
     	}
 
         Auth::user()->update($request->all());
@@ -104,7 +104,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        Storage::delete('uploads/avatars/'.$id);
+
     }
 
 }
