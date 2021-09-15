@@ -23,6 +23,3 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [UserController::class, 'index'])->name('profile');
 Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
-Route::post('/profile', [UserController::class, 'update_avatar'])->name('profile.update_avatar');
-
-Route::get('tes/{id}', [UserController::class, 'destroy']);

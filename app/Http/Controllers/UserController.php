@@ -75,18 +75,19 @@ class UserController extends Controller
     {
         // Handle the user upload of avatar
     	if($request->hasFile('avatar')){
-    		
+    		// rename file
     		$avatar = $request->file('avatar');
     		$filename = 'uploads/avatars/' . time() . '.' . $avatar->getClientOriginalExtension();
             
             // resizing an uploaded file
             Image::make($request->file('avatar'))->resize(300, 300)->save(public_path('storage/'.$filename));
 
+            // save to db
     		$user = Auth::user();
     		$user->avatar = $filename;
     		$user->save();
 
-            // hapus avatar yang lama
+            // delete old file
             Storage::delete($request->oldavatar);
     	}
 
