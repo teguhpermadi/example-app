@@ -21,19 +21,20 @@
                     <img src="https://source.unsplash.com/weekly?maps" alt="" class="img-thumbnail">
                 </div>
                 <div class="col-sm-9">
+                    <form action="">
                     <h2>Lorem ipsum dolor sit</h2>
                     <table class="table table-striped">
                         <tbody>
                             <?php for ($i=0; $i < 5; $i++) { ?>
                             <tr>
                                 <td>Lorem ipsum dolor sit amet.</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
+                                <td><input type="text" class="form-control" value="Lorem ipsum dolor sit amet."></td>
                             </tr>
                             <?php } ?>
                         </tbody>
                       </table>
-                        <a href="" class="btn btn-warning">Edit</a>
-                        <button class="btn btn-danger">Hapus</button>
+                        <button class="btn btn-primary">Simpan</button>
+                    </form>
                 </div>
 
             </div>
