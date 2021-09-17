@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +25,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [UserController::class, 'index'])->name('profile');
 Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('sekolah', [SekolahController::class, 'index'])->name('sekolah.index');
