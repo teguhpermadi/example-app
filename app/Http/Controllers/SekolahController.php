@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Session;
 
 class SekolahController extends Controller
 {
@@ -13,7 +16,15 @@ class SekolahController extends Controller
      */
     public function index()
     {
-        return view('pages.sekolah.index');
+        $data = Sekolah::all();
+        if($data->count() > 0)
+        {
+            $sekolah = $data;
+        } else {
+            $sekolah = [];
+        };
+        // dd($sekolah);
+        return view('pages.sekolah.index', compact('sekolah'));
     }
 
     /**
@@ -23,7 +34,7 @@ class SekolahController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.sekolah.create');
     }
 
     /**
@@ -34,7 +45,10 @@ class SekolahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Sekolah::create($request->all());
+        Session::flash('message', 'Data added successfuly.'); 
+        Session::flash('alert-class', 'alert-info'); 
+        return redirect('sekolah');
     }
 
     /**
@@ -56,7 +70,9 @@ class SekolahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sekolah = Sekolah::find($id);
+        // dd($sekolah);
+        return view('pages.sekolah.edit', compact('sekolah'));
     }
 
     /**
@@ -68,7 +84,21 @@ class SekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Handle the user upload of avatar
+    	if($request->hasFile('logo')){
+    		// rename file
+    		$request->file('logo')->store('images');
+
+            // delete old file
+            // Storage::delete($request->oldlogo);
+    	}
+
+        $input = $request->except(['_method', '_token']);
+
+        Sekolah::find($id)->update($input);
+        Session::flash('message', 'Data updated successfuly.'); 
+        Session::flash('alert-class', 'alert-warning'); 
+        return redirect('sekolah');
     }
 
     /**
@@ -79,6 +109,10 @@ class SekolahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Sekolah::find($id)->delete();
+        Session::flash('message', 'Data deleted successfuly.'); 
+        Session::flash('alert-class', 'alert-danger'); 
+        return redirect('sekolah');
+
     }
 }

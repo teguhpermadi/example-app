@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\SekolahModel;
+use App\Models\Sekolah;
 use Illuminate\Database\Seeder;
 
 class SekolahSeeder extends Seeder
@@ -14,6 +14,6 @@ class SekolahSeeder extends Seeder
      */
     public function run()
     {
-        SekolahModel::factory(1)->create();
+        Sekolah::factory(5)->create();
     }
 }

@@ -30,21 +30,21 @@
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <img class="mr-3 rounded" width="30" src="../assets/img/products/product-3-50.png"
+                        {{-- <img class="mr-3 rounded" width="30" src="../assets/img/products/product-3-50.png" --}}
                             alt="product">
                         oPhone S9 Limited Edition
                     </a>
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <img class="mr-3 rounded" width="30" src="../assets/img/products/product-2-50.png"
+                        {{-- <img class="mr-3 rounded" width="30" src="../assets/img/products/product-2-50.png" --}}
                             alt="product">
                         Drone X2 New Gen-7
                     </a>
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <img class="mr-3 rounded" width="30" src="../assets/img/products/product-1-50.png"
+                        {{-- <img class="mr-3 rounded" width="30" src="../assets/img/products/product-1-50.png" --}}
                             alt="product">
                         Headphone Blitz
                     </a>

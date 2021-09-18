@@ -36,6 +36,7 @@
                 @yield('content')
             </div>
 
+
             {{-- footer --}}
             @include('layouts.stisla.footer')
 
@@ -61,8 +62,8 @@
     <!-- Template JS File -->
     <script src="{{ url('stisla/js/scripts.js') }}"></script>
     <script src="{{ url('stisla/js/custom.js') }}"></script>
-
     <!-- Page Specific JS File -->
+    <script src="{{ url('stisla/js/page/bootstrap-modal.js') }}"></script>
     @yield('js')
 </body>
 
