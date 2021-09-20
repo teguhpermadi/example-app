@@ -6,6 +6,16 @@
         <h1>Edit Profil Sekolah</h1>
     </div>
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <div class="section-body">
         {{ Form::open(['route' => ['sekolah.update', $sekolah->id], 'method' => 'put', 'files' => true]) }}
         @csrf

@@ -25,7 +25,7 @@
         <div class="card p-3">
             <div class="row">
                 <div class="col-sm-3">
-                    <img src="{{ $s->logo }}" alt="" class="img-thumbnail">
+                    <img src="{{ asset('storage/'.$s->logo) }}" alt="" class="img-thumbnail">
                     <img src="https://source.unsplash.com/weekly?maps" alt="" class="img-thumbnail">
                 </div>
                 <div class="col-sm-9">

@@ -20,7 +20,7 @@ class GenerateMenus
             $menu->raw('Menu User', ['class' => 'menu-header']); //divide
             
             // menu biasa
-            $menu->add('Home', 'home')
+            $menu->add('Home', ['route'  => 'dashboard.index'])
             ->append('</span>')
             ->prepend('<i class="fas fa-home"></i> <span>')
             ->link->attr(['class' => 'nav-link']);
@@ -32,7 +32,7 @@ class GenerateMenus
             $dropdown->add('Menu 2');
             $dropdown->add('Menu 3');
 
-            $menu->add('Profil Sekolah')
+            $menu->add('Profil Sekolah', ['route'  => 'sekolah.index'])
             ->append('</span>')
             ->prepend('<i class="fas fa-school"></i> <span>')
             ->link->attr(['class' => 'nav-link']);

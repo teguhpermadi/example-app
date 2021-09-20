@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SekolahRequest;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -43,7 +44,7 @@ class SekolahController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SekolahRequest $request)
     {
         $path = $request->file('logo')->store('uploads/images');
         $data = [
@@ -63,8 +64,10 @@ class SekolahController extends Controller
             'website' => $request->website,
             'logo' => $path,
         ];
+
+        $validatedData = $request->validated();
         // $data = $request->merge(['logo' => $path]);
-        // dd($data);
+        dd($validatedData);
         Sekolah::create($data);
         Session::flash('message', 'Data added successfuly.'); 
         Session::flash('alert-class', 'alert-info'); 
@@ -101,8 +104,11 @@ class SekolahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SekolahRequest $request, $id)
     {
+        $validated = $request->validated();
+        ddd($validated);
+        
         $data = [
             'namasekolah' => $request->namasekolah,
             'npsn' => $request->npsn,
@@ -123,7 +129,7 @@ class SekolahController extends Controller
         // Handle the user upload of avatar
     	if($request->hasFile('logo')){
     		// rename file
-    		$path = $request->file('logo')->store('images');
+    		$path = $request->file('logo')->store('uploads/images');
 
             // delete old file
             Storage::delete($request->oldlogo);
