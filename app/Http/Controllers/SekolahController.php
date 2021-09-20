@@ -45,7 +45,27 @@ class SekolahController extends Controller
      */
     public function store(Request $request)
     {
-        Sekolah::create($request->all());
+        $path = $request->file('logo')->store('uploads/images');
+        $data = [
+            'namasekolah' => $request->namasekolah,
+            'npsn' => $request->npsn,
+            'bentukpendidikan' => $request->bentukpendidikan,
+            'alamat' => $request->alamat,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'distrik' => $request->distrik,
+            'provinsi' => $request->provinsi,
+            'kodepos' => $request->kodepos,
+            'lintang' => $request->lintang,
+            'bujur' => $request->bujur,
+            'telp' => $request->telp,
+            'email' => $request->email,
+            'website' => $request->website,
+            'logo' => $path,
+        ];
+        // $data = $request->merge(['logo' => $path]);
+        // dd($data);
+        Sekolah::create($data);
         Session::flash('message', 'Data added successfuly.'); 
         Session::flash('alert-class', 'alert-info'); 
         return redirect('sekolah');
@@ -71,7 +91,6 @@ class SekolahController extends Controller
     public function edit($id)
     {
         $sekolah = Sekolah::find($id);
-        // dd($sekolah);
         return view('pages.sekolah.edit', compact('sekolah'));
     }
 
@@ -84,18 +103,55 @@ class SekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = [
+            'namasekolah' => $request->namasekolah,
+            'npsn' => $request->npsn,
+            'bentukpendidikan' => $request->bentukpendidikan,
+            'alamat' => $request->alamat,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'distrik' => $request->distrik,
+            'provinsi' => $request->provinsi,
+            'kodepos' => $request->kodepos,
+            'lintang' => $request->lintang,
+            'bujur' => $request->bujur,
+            'telp' => $request->telp,
+            'email' => $request->email,
+            'website' => $request->website,
+        ];
+
         // Handle the user upload of avatar
     	if($request->hasFile('logo')){
     		// rename file
-    		$request->file('logo')->store('images');
+    		$path = $request->file('logo')->store('images');
 
             // delete old file
-            // Storage::delete($request->oldlogo);
+            Storage::delete($request->oldlogo);
+            // $data = [
+            //     'namasekolah' => $request->namasekolah,
+            //     'npsn' => $request->npsn,
+            //     'bentukpendidikan' => $request->bentukpendidikan,
+            //     'alamat' => $request->alamat,
+            //     'kelurahan' => $request->kelurahan,
+            //     'kecamatan' => $request->kecamatan,
+            //     'distrik' => $request->distrik,
+            //     'provinsi' => $request->provinsi,
+            //     'kodepos' => $request->kodepos,
+            //     'lintang' => $request->lintang,
+            //     'bujur' => $request->bujur,
+            //     'telp' => $request->telp,
+            //     'email' => $request->email,
+            //     'website' => $request->website,
+            //     'logo' => $path,
+            // ];
+            $data = array_merge($data, ['logo' => $path]);
     	}
+        // dd($data);
+        
+        
+        // $input = $request->except(['_method', '_token']);
 
-        $input = $request->except(['_method', '_token']);
-
-        Sekolah::find($id)->update($input);
+        Sekolah::find($id)->update($data);
         Session::flash('message', 'Data updated successfuly.'); 
         Session::flash('alert-class', 'alert-warning'); 
         return redirect('sekolah');

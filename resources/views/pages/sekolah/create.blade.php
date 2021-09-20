@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <td>Distrik</td>
-                                <td><input type="text" name="kota"id=""  class="form-control"></td>
+                                <td><input type="text" name="distrik" id=""  class="form-control"></td>
                             </tr>
                             <tr>
                                 <td>Provinsi</td>

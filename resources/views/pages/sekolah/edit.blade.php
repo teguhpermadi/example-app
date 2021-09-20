@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <td>Distrik</td>
-                                <td><input type="text" name="kota"id=""  class="form-control"  value="{{ $sekolah->kota }}"></td>
+                                <td><input type="text" name="distrik" id=""  class="form-control"  value="{{ $sekolah->kota }}"></td>
                             </tr>
                             <tr>
                                 <td>Provinsi</td>
@@ -76,7 +76,10 @@
                             </tr>
                             <tr>
                                 <td>Logo</td>
-                                <td><input type="file" name="logo" id=""></td>
+                                <td>
+                                    <input type="file" name="logo" id="">
+                                    <input type="hidden" name="oldlogo" value="{{ $sekolah->logo }}">
+                                </td>
                             </tr>
                       </table>
                       <button type="submit" class="btn btn-primary">Simpan</button>

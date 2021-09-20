@@ -21,7 +21,7 @@ class CreateSekolahsTable extends Migration
             $table->string('alamat')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('kecamatan')->nullable();
-            $table->string('kota')->nullable();
+            $table->string('distrik')->nullable();
             $table->string('provinsi')->nullable();
             $table->string('kodepos')->nullable();
             $table->string('lintang')->nullable();

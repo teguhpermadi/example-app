@@ -54,7 +54,7 @@
                             </tr>
                             <tr>
                                 <td>Distrik</td>
-                                <td>{{ $s->kota }}</td>
+                                <td>{{ $s->distrik }}</td>
                             </tr>
                             <tr>
                                 <td>Provinsi</td>
