@@ -7,6 +7,7 @@
         </div>
 
         <div class="section-body">
+            <h1>{{ __('general.title') }}</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt laborum vel ratione obcaecati vero quibusdam tempore distinctio esse aliquam quia. Repellendus illum quae distinctio atque pariatur, corporis eius delectus. Deserunt.
             </p>
