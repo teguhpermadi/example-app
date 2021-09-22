@@ -46,7 +46,12 @@ class SekolahController extends Controller
      */
     public function store(SekolahRequest $request)
     {
-        $path = $request->file('logo')->store('uploads/images');
+        if($request->hasFile('logo')){
+            $path = $request->file('logo')->store('uploads/images');
+        } else {
+            $path = '';
+        }
+        
         $data = [
             'namasekolah' => $request->namasekolah,
             'npsn' => $request->npsn,
@@ -67,7 +72,7 @@ class SekolahController extends Controller
 
         $validatedData = $request->validated();
         // $data = $request->merge(['logo' => $path]);
-        dd($validatedData);
+        // dd($validatedData);
         Sekolah::create($data);
         Session::flash('message', 'Data added successfuly.'); 
         Session::flash('alert-class', 'alert-info'); 
