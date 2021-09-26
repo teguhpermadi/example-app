@@ -1,4 +1,7 @@
 @extends('layouts.stisla.master')
+@section('head-js')
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+@endsection
 
 @section('content')
 <section class="section">
@@ -16,100 +19,143 @@
     </div>
     @endif
 
+    @livewire('sekolah.create-form')
+
+    <!--
     <div class="section-body">
         {{ Form::open(['route' => 'sekolah.store', 'method' => 'post', 'files' => true]) }}
         @csrf
         <div class="card p-3">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-sm-3">
                     <img src="#" alt="" class="img-thumbnail">
                     <img src="https://source.unsplash.com/weekly?maps" alt="" class="img-thumbnail">
                 </div>
                 <div class="col-sm-9">
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <td>Nama Sekolah</td>
-                                <td><input type="text" name="namasekolah" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>NPSN</td>
-                                <td><input type="text" name="npsn" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>Bentuk Pendidikan</td>
-                                <td><input type="text" name="bentukpendidikan" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td><input type="text" name="alamat" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>Provinsi</td>
-                                <td>
-                                    {{-- <input type="text" name="provinsi" id="" class="form-control"> --}}
-                                    <select name="provinsi" id="provinsi" class="form-control">
-                                        <option value="">Pilih</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>Distrik</td>
-                                <td>
-                                    {{-- <input type="text" name="distrik" id="" class="form-control"> --}}
-                                    <select name="distrik" id="distrik" class="form-control">
-                                        <option value="">Pilih</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kecamatan</td>
-                                <td>
-                                    {{-- <input type="text" name="kecamatan" id="" class="form-control"> --}}
-                                    <select name="kecamatan" id="kecamatan" class="form-control">
-                                        <option value="">Pilih</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kelurahan</td>
-                                <td>
-                                    {{-- <input type="text" name="kelurahan" id="" class="form-control"> --}}
-                                    <select name="kelurahan" id="kelurahan" class="form-control">
-                                        <option value="">Pilih</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kodepos</td>
-                                <td><input type="text" name="kodepos" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>lintang</td>
-                                <td><input type="text" name="lintang" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>bujur</td>
-                                <td><input type="text" name="bujur" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>telp</td>
-                                <td><input type="text" name="telp" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>email</td>
-                                <td><input type="text" name="email" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>website</td>
-                                <td><input type="text" name="website" id="" class="form-control"></td>
-                            </tr>
-                            <tr>
-                                <td>Logo</td>
-                                <td><input type="file" name="logo" id=""></td>
-                            </tr>
-                    </table>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Nama Sekolah
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="namasekolah" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            NPSN
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="npsn" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Bentuk Pendidikan
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="bentukpendidikan" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Alamat
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="alamat" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Provinsi
+                        </div>
+                        <div class="col-md-9">
+                            <select name="provinsi" id="provinsi" class="form-control">
+                                <option value="">Pilih</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Distrik
+                        </div>
+                        <div class="col-md-9">
+                            <select name="distrik" id="distrik" class="form-control">
+                                <option value="">Pilih</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Kecamatan
+                        </div>
+                        <div class="col-md-9">
+                            <select name="kecamatan" id="kecamatan" class="form-control">
+                                <option value="">Pilih</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Kelurahan
+                        </div>
+                        <div class="col-md-9">
+                            <select name="kelurahan" id="kelurahan" class="form-control">
+                                <option value="">Pilih</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Kodepos
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="kodepos" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Lokasi
+                        </div>
+                        <div class="col-md-9">
+                            {{-- <livewire:map-location /> --}}
+                            <div id='map' style='width: 550px; height: 300px;'></div>
+                            <input type="text" name="bujur" id="long">
+                            <input type="text" name="lintang" id="lat">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            telp
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="telp" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            email
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="email" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            website
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" name="website" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            Logo
+                        </div>
+                        <div class="col-md-9">
+                            <input type="file" name="logo" id="">
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="{{ route('sekolah.index') }}" class="btn btn-secondary">Batal</a>
                 </div>
@@ -118,11 +164,15 @@
         </div>
         {{ Form::close() }}
     </div>
+-->
 </section>
 @endsection
 
 @section('js')
 {{-- custom js per page --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+
+{{-- script dropdown --}}
 <script>
     // onload page
     var provinsi = $('#provinsi')
@@ -189,14 +239,48 @@
     })
 
     // tampilkan data kelurahan
-    function getKelurahan(villages)
-    {
+    function getKelurahan(villages) {
         kelurahan.empty();
         kelurahan.append('<option value="">Pilih</option>')
         villages.forEach(element => {
             kelurahan.append('<option value="' + element.id + '">' + element.name + '</option>')
         });
     }
+
+</script>
+
+<script>
+    window.addEventListener('load', () => {
+        const defaultLocation = [112.621391, -7.983908]
+
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoidGVndWhwZXJtYWRpIiwiYSI6ImNrdHlmdjhrdzB0enIydXRodTNrMmsweWsifQ.qDYxEaljnRN5URnTUZcDjQ';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            center: defaultLocation,
+            zoom: 11, // starting zoom
+            style: 'mapbox://styles/mapbox/streets-v11'
+        });
+
+        map.addControl(new mapboxgl.NavigationControl)
+        this.marker = new mapboxgl.Marker();
+
+        map.on('click', (e) => {
+            const longtitude = e.lngLat.lng
+            const lattitude = e.lngLat.lat
+            // console.log({longtitude, lattitude})
+            $('#long').val(longtitude)
+            $('#lat').val(lattitude)
+            add_marker(e)
+        })
+
+        function add_marker(event) {
+            var coordinates = event.lngLat;
+            // console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+            this.marker.setLngLat(coordinates).addTo(map);
+        }
+    })
+
 
 </script>
 @endsection

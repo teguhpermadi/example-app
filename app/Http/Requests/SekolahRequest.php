@@ -25,20 +25,20 @@ class SekolahRequest extends FormRequest
     {
         return [
             'namasekolah' => 'required|string',
-            'npsn' => 'numeric',
-            'bentukpendidikan' => 'required',
-            'alamat' => 'required|string',
-            'kelurahan' => 'required|string',
-            'kecamatan' => 'required|string',
-            'distrik' => 'required|string',
-            'provinsi' => 'required|string',
-            'kodepos' => 'required|numeric',
+            // 'npsn' => 'numeric',
+            // 'bentukpendidikan' => 'required',
+            // 'alamat' => 'required|string',
+            // 'kelurahan' => 'required|string',
+            // 'kecamatan' => 'required|string',
+            // 'distrik' => 'required|string',
+            // 'provinsi' => 'required|string',
+            // 'kodepos' => 'required|numeric',
             // 'lintang' => $request->lintang,
             // 'bujur' => $request->bujur,
             // 'telp' => $request->telp,
-            'email' => 'email',
-            'website' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
-            'logo' => 'image',
+            // 'email' => 'email',
+            // 'website' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            // 'logo' => 'image',
             
         ];
     }

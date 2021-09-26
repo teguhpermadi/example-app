@@ -17,6 +17,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ url('stisla/css/style.css') }}">
     <link rel="stylesheet" href="{{ url('stisla/css/components.css') }}">
+    @yield('head-js')
 </head>
 
 <body>
@@ -65,6 +66,7 @@
     <!-- Page Specific JS File -->
     <script src="{{ url('stisla/js/page/bootstrap-modal.js') }}"></script>
     @yield('js')
+    @stack('script-livewire')
 </body>
 
 </html>

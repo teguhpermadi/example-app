@@ -72,7 +72,7 @@ class SekolahController extends Controller
 
         $validatedData = $request->validated();
         // $data = $request->merge(['logo' => $path]);
-        // dd($validatedData);
+        dd($validatedData);
         Sekolah::create($data);
         Session::flash('message', 'Data added successfuly.'); 
         Session::flash('alert-class', 'alert-info'); 
