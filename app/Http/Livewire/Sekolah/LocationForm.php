@@ -9,6 +9,7 @@ use Laravolt\Indonesia\Models\Kecamatan;
 use Laravolt\Indonesia\Models\City;
 use Laravolt\Indonesia\Models\District;
 use Laravolt\Indonesia\Models\Village;
+use Illuminate\Support\Facades\DB;
 
 class LocationForm extends Component
 {
@@ -27,15 +28,8 @@ class LocationForm extends Component
         $this->allKelurahan = collect();
         $this->selectedKelurahan = $selectedKelurahan;
 
-        // dd($this->provinsi);
-
-        // countries = distrik
-        // states = kecamatan
-        // cities = kelurahan
-
         if (!is_null($selectedKelurahan)) {
-            // $kelurahan = \Indonesia::findVillage($selectedKelurahan, $with = ['district','city','province']);
-            $kelurahan = \Indonesia::find($selectedKelurahan, $with = ['district','city','province']);
+            $kelurahan = \Indonesia::findVillage($selectedKelurahan, $with = ['district','city','province']);
             // dd($kelurahan);
             if ($kelurahan) {
                 $this->allKelurahan = Kelurahan::where('district_code', $kelurahan->district_code)->get();
@@ -55,18 +49,18 @@ class LocationForm extends Component
         return view('livewire.sekolah.location-form');
     }
 
-    protected $rules = [
-        'allProvinsi' => 'required',
-        'allDistrik' => 'required',
-        'allKecamatan' => 'required',
-        'allKelurahan' => 'required',
-        'kodepos' => 'numeric',
-    ];
+    // protected $rules = [
+    //     'selectedProvinsi' => 'required',
+    //     'selectedDistrik' => 'required',
+    //     'selectedKecamatan' => 'required',
+    //     'selectedKelurahan' => 'required',
+    //     'kodepos' => 'numeric',
+    // ];
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-    }
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
+    // }
 
     public function updatedSelectedProvinsi($provinsi)
     {
@@ -100,6 +94,8 @@ class LocationForm extends Component
             'kecamatan' => $this->selectedKecamatan,
             'kelurahan' => $this->selectedKelurahan,
         ];
-        dd($data);
+        
+        $this->emit('dataLocations', $data);
     }
+    
 }

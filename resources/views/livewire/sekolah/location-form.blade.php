@@ -5,13 +5,13 @@
             Provinsi
         </div>
         <div class="col-md-9">
-            <select wire:model="selectedProvinsi" class="form-control @error('allProvinsi') is-invalid @enderror">
-                <option value="" selected>Pilih</option>
+            <select wire:model="selectedProvinsi" class="form-control @error('selectedProvinsi') is-invalid @enderror">
+                <option value="">Pilih</option>
                 @foreach ($allProvinsi as $provinsi)
                     <option value="{{ $provinsi->code }}">{{ $provinsi->name }}</option>
                 @endforeach
             </select>
-            @error('allProvinsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('selectedProvinsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
@@ -19,13 +19,13 @@
             Distrik
         </div>
         <div class="col-md-9">
-            <select wire:model="selectedDistrik" class="form-control @error('allDistrik') is-invalid @enderror">
-                <option value="" selected>Pilih</option>
+            <select wire:model="selectedDistrik" class="form-control @error('selectedDistrik') is-invalid @enderror">
+                <option value="">Pilih</option>
                 @foreach ($allDistrik as $distrik)
                     <option value="{{ $distrik->code }}">{{ $distrik->name }}</option>
                 @endforeach
             </select>
-            @error('allDistrik') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('selectedDistrik') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
@@ -33,13 +33,13 @@
             Kecamatan
         </div>
         <div class="col-md-9">
-            <select wire:model="selectedKecamatan" class="form-control @error('allKecamatan') is-invalid @enderror">
-                <option value="" selected>Pilih</option>
+            <select wire:model="selectedKecamatan" class="form-control @error('selectedKecamatan') is-invalid @enderror">
+                <option value="">Pilih</option>
                 @foreach ($allKecamatan as $kecamatan)
                     <option value="{{ $kecamatan->code }}">{{ $kecamatan->name }}</option>
                 @endforeach
             </select>
-            @error('allKecamatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('selectedKecamatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
@@ -47,14 +47,14 @@
             Kelurahan
         </div>
         <div class="col-md-9">
-            <select wire:model="selectedKelurahan" class="form-control @error('allKelurahan') is-invalid @enderror">
-                <option value="" selected>Pilih</option>
+            <select wire:model="selectedKelurahan" class="form-control @error('selectedKelurahan') is-invalid @enderror">
+                <option value="">Pilih</option>
                 @foreach ($allKelurahan as $kelurahan)
                     <option value="{{ $kelurahan->code }}">{{ $kelurahan->name }}</option>
                     
                 @endforeach
             </select>
-            @error('allKelurahan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('selectedKelurahan') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">

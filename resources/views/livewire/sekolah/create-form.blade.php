@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        @livewire('sekolah.location-form')
+        {{-- @livewire('sekolah.location-form') --}}
         {{-- @livewire('sekolah.map-form') --}}
         {{-- @livewire('sekolah.contact-form') --}}
         <button type="submit" class="btn btn-primary">Save Contact</button>

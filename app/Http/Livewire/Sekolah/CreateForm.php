@@ -4,12 +4,15 @@ namespace App\Http\Livewire\Sekolah;
 
 use App\Models\Sekolah;
 use Livewire\Component;
+use Illuminate\Support\Arr;
 
 class CreateForm extends Component
 {
     public $namasekolah, $npsn, $bentukpendidikan, $alamat;
 
-    protected $listeners = ['kodepos'];
+    public $locations = [];
+
+    protected $listeners = ['dataLocations'];
 
     public function render()
     {
@@ -35,8 +38,16 @@ class CreateForm extends Component
     public function submit()
     {
         $validatedData = $this->validate();
-        
         dd($validatedData);
-        Sekolah::create($validatedData);
+        // Sekolah::create($validatedData);
     }
+
+    public function dataLocations($data)
+    {
+        if(!is_null($data))
+        {
+            $this->locations = $data;
+        }
+    }
+
 }
