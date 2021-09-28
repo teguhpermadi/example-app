@@ -2,38 +2,50 @@
 
 namespace App\Http\Livewire\Sekolah;
 
-use Laravolt\Indonesia\Models\Kelurahan;
 use Livewire\Component;
-
 use Http;
+use Laravolt\Indonesia\Models\Kelurahan;
+use Laravolt\Indonesia\Models\Kecamatan;
+use Laravolt\Indonesia\Models\City;
+use Laravolt\Indonesia\Models\District;
+use Laravolt\Indonesia\Models\Village;
 
 class LocationForm extends Component
 {
-    public $provinsi, $distrik, $kecamatan, $kelurahan, $kodepos;
+    public $allProvinsi, $allDistrik, $allKecamatan, $allKelurahan, $kodepos;
     // public $dataProvinsi, $dataDistrik, $dataKecamatan, $dataKelurahan;
     public $selectedProvinsi = null;
     public $selectedDistrik = null;
     public $selectedKecamatan = null;
     public $selectedKelurahan = null;
 
-    public function mount($selectedKelurahan = 1)
+    public function mount($selectedKelurahan = null)
     {
-        $this->provinsi = \Indonesia::allProvinces();
-        $this->distrik = collect();
-        $this->kecamatan = collect();
+        $this->allProvinsi = \Indonesia::allProvinces();
+        $this->allDistrik = collect();
+        $this->allKecamatan = collect();
+        $this->allKelurahan = collect();
         $this->selectedKelurahan = $selectedKelurahan;
 
         // dd($this->provinsi);
 
+        // countries = distrik
+        // states = kecamatan
+        // cities = kelurahan
+
         if (!is_null($selectedKelurahan)) {
-            $kelurahan = Kelurahan::findOrFail($selectedKelurahan);
-            // ddd($kelurahan);
+            // $kelurahan = \Indonesia::findVillage($selectedKelurahan, $with = ['district','city','province']);
+            $kelurahan = \Indonesia::find($selectedKelurahan, $with = ['district','city','province']);
+            // dd($kelurahan);
             if ($kelurahan) {
-                $this->provinsi = \Indonesia::findVillage($selectedKelurahan,  ['province', 'city', 'district', 'district.city', 'district.city.province']);
-                ddd($this->provinsi );
-        //         $this->states = State::where('country_id', $city->state->country_id)->get();
-        //         $this->selectedCountry = $city->state->country_id;
-        //         $this->selectedState = $city->state_id;
+                $this->allKelurahan = Kelurahan::where('district_code', $kelurahan->district_code)->get();
+                $this->allKecamatan = Kecamatan::where('city_code', $kelurahan->district->city_code)->get(); 
+                $this->allDistrik = City::where('province_code', $kelurahan->city->province_code)->get();
+                $this->allProvinsi = \Indonesia::allProvinces();
+                $this->selectedKelurahan = $kelurahan->code;
+                $this->selectedKecamatan = $kelurahan->district->code;
+                $this->selectedDistrik = $kelurahan->city->code;
+                $this->selectedProvinsi = $kelurahan->province->code;
             }
         }
     }
@@ -44,10 +56,10 @@ class LocationForm extends Component
     }
 
     protected $rules = [
-        'provinsi' => 'required',
-        'distrik' => 'required',
-        'kecamatan' => 'required',
-        'kelurahan' => 'required',
+        'allProvinsi' => 'required',
+        'allDistrik' => 'required',
+        'allKecamatan' => 'required',
+        'allKelurahan' => 'required',
         'kodepos' => 'numeric',
     ];
 
@@ -56,16 +68,38 @@ class LocationForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function updatedProvinsi($state)
+    public function updatedSelectedProvinsi($provinsi)
     {
-        // ketika dropdown provinsi di pilih
-        // dd($state);
-        if (!is_null($state)) {
-            $response = Http::get('https://teguhpermadi.github.io/api-wilayah-indonesia/api/regencies/'.$state.'.json');
-            $collection = json_decode($response);
-            $this->dataDistrik = collect($collection)->all();
-            // dd($this->dataDistrik);
-        }
-
+        $this->allDistrik = City::where('province_code', $provinsi)->get();
+        $this->selectedDistrik = null;
+        $this->selectedKecamatan = null;
+        $this->selectedKelurahan = null;
     }  
+
+    public function updatedSelectedDistrik($distrik)
+    {
+        if (!is_null($distrik)) {
+            $this->allKecamatan = District::where('city_code', $distrik)->get();
+        }
+        $this->selectedKelurahan = null;
+
+    }
+
+    public function updatedSelectedKecamatan($kecamatan)
+    {
+        if (!is_null($kecamatan)) {
+            $this->allKelurahan = Village::where('district_code', $kecamatan)->get();
+        }
+    }
+
+    public function updatedSelectedKelurahan($kelurahan)
+    {
+        $data = [
+            'provinsi' => $this->selectedProvinsi,
+            'distrik' => $this->selectedDistrik,
+            'kecamatan' => $this->selectedKecamatan,
+            'kelurahan' => $this->selectedKelurahan,
+        ];
+        dd($data);
+    }
 }

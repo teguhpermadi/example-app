@@ -5,13 +5,13 @@
             Provinsi
         </div>
         <div class="col-md-9">
-            <select wire:model="selectedProvinsi" class="form-control @error('provinsi') is-invalid @enderror">
-                <option value="">Pilih</option>
-                @foreach ($provinsi as $p)
-                    <option value="{{ $p->id }}">{{ $p->name }}</option>
+            <select wire:model="selectedProvinsi" class="form-control @error('allProvinsi') is-invalid @enderror">
+                <option value="" selected>Pilih</option>
+                @foreach ($allProvinsi as $provinsi)
+                    <option value="{{ $provinsi->code }}">{{ $provinsi->name }}</option>
                 @endforeach
             </select>
-            @error('provinsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('allProvinsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
@@ -19,14 +19,13 @@
             Distrik
         </div>
         <div class="col-md-9">
-            <select wire:model="selectedDistrik" class="form-control @error('distrik') is-invalid @enderror">
-                <option value="">Pilih</option>
-                    @foreach ($distrik as $d)
-                    {{ $distrik }}
-                        <option value="{{ $d->id }}">{{ $d->name }}</option>
-                    @endforeach
+            <select wire:model="selectedDistrik" class="form-control @error('allDistrik') is-invalid @enderror">
+                <option value="" selected>Pilih</option>
+                @foreach ($allDistrik as $distrik)
+                    <option value="{{ $distrik->code }}">{{ $distrik->name }}</option>
+                @endforeach
             </select>
-            @error('distrik') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('allDistrik') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
@@ -34,10 +33,13 @@
             Kecamatan
         </div>
         <div class="col-md-9">
-            <select wire:model="kecamatan" class="form-control @error('kecamatan') is-invalid @enderror">
-                <option value="">Pilih</option>
+            <select wire:model="selectedKecamatan" class="form-control @error('allKecamatan') is-invalid @enderror">
+                <option value="" selected>Pilih</option>
+                @foreach ($allKecamatan as $kecamatan)
+                    <option value="{{ $kecamatan->code }}">{{ $kecamatan->name }}</option>
+                @endforeach
             </select>
-            @error('kecamatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('allKecamatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
@@ -45,10 +47,14 @@
             Kelurahan
         </div>
         <div class="col-md-9">
-            <select wire:model="kelurahan" class="form-control @error('kelurahan') is-invalid @enderror">
-                <option value="">Pilih</option>
+            <select wire:model="selectedKelurahan" class="form-control @error('allKelurahan') is-invalid @enderror">
+                <option value="" selected>Pilih</option>
+                @foreach ($allKelurahan as $kelurahan)
+                    <option value="{{ $kelurahan->code }}">{{ $kelurahan->name }}</option>
+                    
+                @endforeach
             </select>
-            @error('kelurahan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            @error('allKelurahan') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
     </div>
     <div class="row mb-3">
