@@ -5,16 +5,16 @@
     <input type="text" name="lintang" id="" wire:model='lat'>
 </div>
 
-@push('script-livewire')
+{{-- @push('script-livewire') --}}
 <script>
     document.addEventListener('livewire:load', () => {
-        const defaultLocation = [112.621391, -7.983908]
+        // const defaultLocation = [112.621391, -7.983908]
 
         mapboxgl.accessToken =
             'pk.eyJ1IjoidGVndWhwZXJtYWRpIiwiYSI6ImNrdHlmdjhrdzB0enIydXRodTNrMmsweWsifQ.qDYxEaljnRN5URnTUZcDjQ';
         var map = new mapboxgl.Map({
             container: 'map',
-            center: defaultLocation,
+            // center: defaultLocation,
             zoom: 11, // starting zoom
             style: 'mapbox://styles/mapbox/streets-v11'
         });
@@ -40,4 +40,4 @@
     })
 
 </script>
-@endpush
+{{-- @endpush --}}

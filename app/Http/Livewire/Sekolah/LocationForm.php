@@ -3,13 +3,11 @@
 namespace App\Http\Livewire\Sekolah;
 
 use Livewire\Component;
-use Http;
 use Laravolt\Indonesia\Models\Kelurahan;
 use Laravolt\Indonesia\Models\Kecamatan;
 use Laravolt\Indonesia\Models\City;
 use Laravolt\Indonesia\Models\District;
 use Laravolt\Indonesia\Models\Village;
-use Illuminate\Support\Facades\DB;
 
 class LocationForm extends Component
 {
