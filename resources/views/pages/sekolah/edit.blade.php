@@ -66,11 +66,11 @@
                             </tr>
                             <tr>
                                 <td>lintang</td>
-                                <td><input type="text" name="lintang"id=""  class="form-control"  value="{{ $sekolah->lintang }}"></td>
+                                <td><input type="text" name="lintang"id=""  class="form-control"  value="{{ $sekolah->lat }}"></td>
                             </tr>
                             <tr>
                                 <td>bujur</td>
-                                <td><input type="text" name="bujur"id=""  class="form-control"  value="{{ $sekolah->bujur }}"></td>
+                                <td><input type="text" name="bujur"id=""  class="form-control"  value="{{ $sekolah->lng }}"></td>
                             </tr>
                             <tr>
                                 <td>telp</td>

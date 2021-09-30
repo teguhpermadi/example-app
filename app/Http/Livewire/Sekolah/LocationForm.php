@@ -9,12 +9,10 @@ use Laravolt\Indonesia\Models\Kecamatan;
 use Laravolt\Indonesia\Models\City;
 use Laravolt\Indonesia\Models\District;
 use Laravolt\Indonesia\Models\Village;
-use Illuminate\Support\Facades\DB;
 
 class LocationForm extends Component
 {
     public $allProvinsi, $allDistrik, $allKecamatan, $allKelurahan, $kodepos;
-    // public $dataProvinsi, $dataDistrik, $dataKecamatan, $dataKelurahan;
     public $selectedProvinsi = null;
     public $selectedDistrik = null;
     public $selectedKecamatan = null;
@@ -30,7 +28,9 @@ class LocationForm extends Component
 
         if (!is_null($selectedKelurahan)) {
             $kelurahan = \Indonesia::findVillage($selectedKelurahan, $with = ['district','city','province']);
-            // dd($kelurahan);
+            $this->metaLatLng = $kelurahan->meta;
+            $this->emit('metaMap', $this->metaKelurahan);
+            // dd($kelurahan->meta);
             if ($kelurahan) {
                 $this->allKelurahan = Kelurahan::where('district_code', $kelurahan->district_code)->get();
                 $this->allKecamatan = Kecamatan::where('city_code', $kelurahan->district->city_code)->get(); 
@@ -49,18 +49,27 @@ class LocationForm extends Component
         return view('livewire.sekolah.location-form');
     }
 
-    // protected $rules = [
-    //     'selectedProvinsi' => 'required',
-    //     'selectedDistrik' => 'required',
-    //     'selectedKecamatan' => 'required',
-    //     'selectedKelurahan' => 'required',
-    //     'kodepos' => 'numeric',
-    // ];
+    protected $rules = [
+        'selectedProvinsi' => 'required',
+        'selectedDistrik' => 'required',
+        'selectedKecamatan' => 'required',
+        'selectedKelurahan' => 'required',
+        'kodepos' => 'numeric|required',
+    ];
 
-    // public function updated($propertyName)
-    // {
-    //     $this->validateOnly($propertyName);
-    // }
+    protected $validationAttributes = [
+        'selectedProvinsi' => 'provinsi',
+        'selectedDistrik' => 'distrik',
+        'selectedKecamatan' => 'kecamatan',
+        'selectedKelurahan' => 'kelurahan',
+        'kodepos' => 'kode pos',
+    ];
+
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function updatedSelectedProvinsi($provinsi)
     {
@@ -88,13 +97,19 @@ class LocationForm extends Component
 
     public function updatedSelectedKelurahan($kelurahan)
     {
+        
+    }
+
+    public function dehydrate()
+    {
+        $this->emit('parentComponentErrorBag', $this->getErrorBag());
         $data = [
             'provinsi' => $this->selectedProvinsi,
             'distrik' => $this->selectedDistrik,
             'kecamatan' => $this->selectedKecamatan,
             'kelurahan' => $this->selectedKelurahan,
         ];
-        
+
         $this->emit('dataLocations', $data);
     }
     

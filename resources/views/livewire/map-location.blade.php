@@ -4,7 +4,7 @@
     <input type="text" name="bujur" id="" wire:model="long">
     <input type="text" name="lintang" id="" wire:model='lat'>
 </div>
-
+{{-- 
 @push('script-livewire')
 <script>
     document.addEventListener('livewire:load', () => {
@@ -40,4 +40,4 @@
     })
 
 </script>
-@endpush
+@endpush --}}

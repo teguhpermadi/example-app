@@ -8,28 +8,17 @@ use Illuminate\Support\Arr;
 
 class CreateForm extends Component
 {
-    public $namasekolah, $npsn, $bentukpendidikan, $alamat;
+    
+    public $data, $dataIdentitas, $dataLocations, $dataMap;
 
-    public $locations = [];
-
-    protected $listeners = ['dataLocations'];
+    protected $listeners = ['parentComponentErrorBag', 'dataIdentitasSekolah', 'dataLocations', 'dataMap'];
 
     public function render()
     {
         return view('livewire.sekolah.create-form');
     }
 
-    protected $rules = [
-        'namasekolah' => 'required|max:3',
-        'npsn' => 'numeric',
-        'bentukpendidikan' => 'required',
-        'alamat' => 'required',
-    ];
-
-    protected $validationAttributes = [
-        'namasekolah' => 'nama sekolah',
-    ];
-
+    
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
@@ -37,17 +26,52 @@ class CreateForm extends Component
 
     public function submit()
     {
-        $validatedData = $this->validate();
-        dd($validatedData);
+        // $this->emitSelf('parentComponentErrorBag');
+        // $validatedData = $this->validate();
+        // dd($this->locations);
         // Sekolah::create($validatedData);
+        if(!is_null($this->dataMap)){
+            // $this->dataMap = $data;
+            $data = array_merge($this->dataIdentitas, $this->dataLocations, $this->dataMap);
+        } else {
+            $data = array_merge($this->dataIdentitas, $this->dataLocations);
+        }
+        Sekolah::create($data);
+        
+        // $this->data = $data;
+        // dd($data);
+    }
+
+    public function parentComponentErrorBag($errorBag)
+    {
+        $this->setErrorBag($errorBag);
+    }
+
+    public function dataIdentitasSekolah($data)
+    {
+        $this->dataIdentitas = $data;
     }
 
     public function dataLocations($data)
     {
         if(!is_null($data))
         {
-            $this->locations = $data;
+            $this->dataLocations = $data;
+        } else {
+            $this->dataLocations = [
+                'provinsi' => null,
+                'distrik' => null,
+                'kecamatan' => null,
+                'kelurahan' => null,
+            ];
         }
+    }
+
+    public function dataMap($data)
+    {
+        $this->dataMap = $data;
+        
+        // dd($data);
     }
 
 }

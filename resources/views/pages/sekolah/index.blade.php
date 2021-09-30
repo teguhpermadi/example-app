@@ -66,11 +66,11 @@
                             </tr>
                             <tr>
                                 <td>lintang</td>
-                                <td>{{ $s->lintang }}</td>
+                                <td>{{ $s->lat }}</td>
                             </tr>
                             <tr>
                                 <td>bujur</td>
-                                <td>{{ $s->bujur }}</td>
+                                <td>{{ $s->lng }}</td>
                             </tr>
                             <tr>
                                 <td>telp</td>

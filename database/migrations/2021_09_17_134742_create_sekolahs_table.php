@@ -24,8 +24,8 @@ class CreateSekolahsTable extends Migration
             $table->string('distrik')->nullable();
             $table->string('provinsi')->nullable();
             $table->string('kodepos')->nullable();
-            $table->string('lintang')->nullable();
-            $table->string('bujur')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();
