@@ -4,6 +4,7 @@ namespace Modules\Sekolah\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Sekolah\Entities\Sekolah;
 
 class SekolahDatabaseSeeder extends Seeder
 {
@@ -14,8 +15,9 @@ class SekolahDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
+        // Sekolah::unguard();
         // $this->call("OthersTableSeeder");
+        Sekolah::factory(1)->create();
+
     }
 }

@@ -28,12 +28,12 @@ Route::put('/profile', [UserController::class, 'update'])->name('profile.update'
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-Route::get('sekolah', [SekolahController::class, 'index'])->name('sekolah.index');
-Route::get('sekolah/create', [SekolahController::class, 'create'])->name('sekolah.create');
-Route::post('sekolah', [SekolahController::class, 'store'])->name('sekolah.store');
-Route::get('sekolah/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
-Route::put('sekolah/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
-Route::delete('sekolah/{id}', [SekolahController::class, 'destroy'])->name('sekolah.destroy');
+// Route::get('sekolah', [SekolahController::class, 'index'])->name('sekolah.index');
+// Route::get('sekolah/create', [SekolahController::class, 'create'])->name('sekolah.create');
+// Route::post('sekolah', [SekolahController::class, 'store'])->name('sekolah.store');
+// Route::get('sekolah/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
+// Route::put('sekolah/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
+// Route::delete('sekolah/{id}', [SekolahController::class, 'destroy'])->name('sekolah.destroy');
 
 Route::get('lang/{locale}', function ($locale) {
     App::setLocale($locale);

@@ -6,4 +6,5 @@
     <p>
         This view is loaded from module: {!! config('sekolah.name') !!}
     </p>
+    @livewire('sekolah::index')
 @endsection

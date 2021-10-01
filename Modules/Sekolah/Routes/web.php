@@ -12,5 +12,5 @@
 */
 
 Route::prefix('sekolah')->group(function() {
-    Route::get('/', 'SekolahController@index');
+    Route::get('/', 'SekolahController@index')->name('sekolah.index');
 });
