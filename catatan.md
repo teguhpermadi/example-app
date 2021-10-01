@@ -10,3 +10,6 @@ file-file tersebut antara lain :
 6. Province.php
 7. Provinsi.php
 8. Village.php
+
+tambahkan ini dibagian file .env
+MAPBOX=pk.eyJ1IjoidGVndWhwZXJtYWRpIiwiYSI6ImNrdHlmdjhrdzB0enIydXRodTNrMmsweWsifQ.qDYxEaljnRN5URnTUZcDjQ
