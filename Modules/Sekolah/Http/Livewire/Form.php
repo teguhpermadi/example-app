@@ -22,9 +22,6 @@ class Form extends Component
     public $lat, $lng;
     public $telp, $email, $website;
 
-    // public $data, $dataIdentitas, $dataLokasi, $dataMap, $dataKontak;
-
-    // protected $listeners = ['parentComponentErrorBag', 'dataIdentitas', 'dataLokasi', 'dataMap', 'dataKontak'];
     protected $listeners = ['dataLngLat'];
 
     public function mount($data = null)
@@ -128,31 +125,6 @@ class Form extends Component
         
     }
 
-    // public function parentComponentErrorBag($errorBag)
-    // {
-    //     $this->setErrorBag($errorBag);
-    // }
-
-    // public function dataIdentitas($data)
-    // {
-    //     $this->dataIdentitas = $data;
-    // }
-
-    // public function dataLokasi($data)
-    // {
-    //     $this->dataLokasi = $data;
-    // }
-
-    // public function dataMap($data)
-    // {
-    //     $this->dataMap = $data;
-    // }
-
-    // public function dataKontak($data)
-    // {
-    //     $this->dataKontak = $data;
-    // }
-
     public function dataLngLat($data)
     {
         $this->lat = $data['lat'];
@@ -162,26 +134,6 @@ class Form extends Component
 
     public function submit()
     {
-        // $arrs = array();
-
-        // $arrs[] = $this->dataIdentitas;
-        // $arrs[] = $this->dataLokasi;
-        // $arrs[] = $this->dataMap;
-        // $arrs[] = $this->dataKontak;
-
-        // $list = array();
-
-        // foreach($arrs as $arr) {
-        //     if(is_array($arr)) {
-        //         $list = array_merge($list, $arr);
-        //     }
-        // }
-
-        // dd($list);
-        // if(!is_null($list))
-        // {
-        //     Sekolah::create($list);
-        // }
         $this->validate();
 
         $data = [
