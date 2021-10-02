@@ -2,6 +2,8 @@
 
 namespace Modules\UsersManagement\Database\Seeders;
 
+use App\Models\User;
+use Database\Seeders\UsersSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,8 +16,13 @@ class UsersManagementDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        // $this->call("OthersTableSeeder");
+        // Model::unguard();
+        // User::factory(5)->create();
+        // factory(User::class)->create();
+        // \Modules\UsersManagement\Database\factories::factory(5)->create();
+        // $this->seed();
+        $this->call([
+            UsersSeeder::class,
+        ]);
     }
 }
