@@ -5,11 +5,9 @@
     <div class="section-header">
         <h1>{!! config('sekolah.name') !!}</h1>
     </div>
-
-    <a href="{{ route('sekolah.create') }}" class="btn btn-primary">Create</a>
-
-    @foreach ($data as $sekolah)
-        @livewire('sekolah::index', ['data' => $sekolah])
-    @endforeach
+    
+    <div class="card p-3">
+        @livewire('sekolah::form')
+    </div>
 </section>
 @endsection

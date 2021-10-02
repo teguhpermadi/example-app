@@ -13,12 +13,6 @@ class CreateSekolah extends Migration
      */
     public function up()
     {
-        Schema::create('', function (Blueprint $table) {
-            $table->id();
-
-            $table->timestamps();
-        });
-
         Schema::create('sekolahs', function (Blueprint $table) {
             $table->id();
             $table->string('namasekolah');

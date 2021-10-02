@@ -5,6 +5,7 @@ namespace Modules\Sekolah\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Sekolah\Entities\Sekolah;
 
 class SekolahController extends Controller
 {
@@ -14,7 +15,8 @@ class SekolahController extends Controller
      */
     public function index()
     {
-        return view('sekolah::index');
+        $data = Sekolah::all();
+        return view('sekolah::index')->with('data', $data);;
     }
 
     /**
@@ -53,7 +55,8 @@ class SekolahController extends Controller
      */
     public function edit($id)
     {
-        return view('sekolah::edit');
+        $data = Sekolah::findOrFail($id);
+        return view('sekolah::edit')->with('data', $data);
     }
 
     /**
@@ -74,6 +77,7 @@ class SekolahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sekolah = Sekolah::findOrFail($id)->delete();
+        return redirect('sekolah');
     }
 }
