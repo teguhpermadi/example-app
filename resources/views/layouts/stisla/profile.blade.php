@@ -22,7 +22,8 @@
             <div class="col-12 col-md-12 col-lg-5">
                 <div class="card profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="image" src="{{ asset('storage/'.$user->avatar) }}"
+                        <img alt="image" src="@if (Auth::user()->avatar != 'default.jpg') {{ asset('storage/'.Auth::user()->avatar) }} @else {{ Avatar::create(Auth::user()->name)->toBase64() }} @endif"
+                        {{-- <img alt="image" src="{{ asset('storage/'.$user->avatar) }}" --}}
                             class="rounded-circle profile-widget-picture">
                         <div class="profile-widget-items">
                             <div class="profile-widget-item">

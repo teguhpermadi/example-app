@@ -17,7 +17,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ url('stisla/css/style.css') }}">
     <link rel="stylesheet" href="{{ url('stisla/css/components.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     
     @yield('head-js')
 </head>
