@@ -146,7 +146,7 @@
         <li class="dropdown  dropdown-list-toggle">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 {{-- <img alt="foto" src="{{ asset('storage/'.Auth::user()->avatar) }}" --}}
-                <img alt="foto" src="@if (Auth::user()->avatar != 'default.jpg') {{ asset('storage/'.Auth::user()->avatar) }} @else {{ Avatar::create(Auth::user()->name)->toBase64() }} @endif"
+                <img alt="foto" src="{{ (Auth::user()->avatar == 'default.jpg') ? Avatar::create(Auth::user()->name)->toBase64() : asset('storage/'.Auth::user()->avatar)}}"
                     class="rounded-circle mr-1 float-left">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
             </a>
