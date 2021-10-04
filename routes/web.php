@@ -40,3 +40,6 @@ Route::get('lang/{locale}', function ($locale) {
     session()->put('locale', $locale);
     return redirect()->back();
 })->name('lang');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
