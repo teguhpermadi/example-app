@@ -14,14 +14,13 @@
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
 
-@yield('page_css')
-<!-- Template CSS -->
+    <!-- Template CSS -->
+    @livewireStyles
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
     @yield('page_css')
-
-
     @yield('css')
+    @stack('head-js')
 </head>
 <body>
 
@@ -64,6 +63,8 @@
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
 @yield('page_js')
 @yield('scripts')
+@livewireScripts
+
 <script>
     let loggedInUser =@json(\Illuminate\Support\Facades\Auth::user());
     let loginUrl = '{{ route('login') }}';
@@ -79,4 +80,5 @@
         };
     }(jQuery));
 </script>
+@stack('script-livewire')
 </html>

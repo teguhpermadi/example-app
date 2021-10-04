@@ -3,3 +3,4 @@
         <i class=" fas fa-building"></i><span>Dashboard</span>
     </a>
 </li>
+<livewire:sidebar-menu />

@@ -4,9 +4,10 @@
     </ul>
 </form>
 <ul class="navbar-nav navbar-right">
-
+    
     @if(\Illuminate\Support\Facades\Auth::user())
-        <li class="dropdown">
+        <livewire:navbar-menu />
+        {{-- <li class="dropdown">
             <a href="#" data-toggle="dropdown"
                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('img/logo.png') }}"
@@ -30,7 +31,7 @@
                     {{ csrf_field() }}
                 </form>
             </div>
-        </li>
+        </li> --}}
     @else
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">

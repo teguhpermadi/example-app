@@ -1,14 +1,10 @@
-@section('head-js')
+@push('head-js')
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-@endsection
+@endpush
 
 <div>
     {{-- livewire view --}}
     <form wire:submit.prevent="submit">
-        {{-- @livewire('sekolah::identitas', ['data' => $data])
-        @livewire('sekolah::lokasi', ['selectedKelurahan' => $data])
-        @livewire('sekolah::map', ['data' => $data])
-        @livewire('sekolah::kontak', ['data' => $data]) --}}
         <div class="row mb-3">
             <div class="col-md-3">
                 Nama Sekolah

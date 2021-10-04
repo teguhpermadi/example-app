@@ -1,4 +1,4 @@
-@extends('layouts.stisla.master')
+@extends('layouts.app')
 
 @section('content')
 <section class="section">

@@ -1,4 +1,4 @@
-@extends('layouts.stisla.master')
+@extends('layouts.app')
 
 @section('content')
 <section class="section">
@@ -6,7 +6,9 @@
         <h1>{!! config('sekolah.name') !!}</h1>
     </div>
 
-    <a href="{{ route('sekolah.create') }}" class="btn btn-primary">Create</a>
+    <div class="row p-3">
+        <a href="{{ route('sekolah.create') }}" class="btn btn-primary">Create</a>
+    </div>
 
     @foreach ($data as $sekolah)
         @livewire('sekolah::index', ['data' => $sekolah])
