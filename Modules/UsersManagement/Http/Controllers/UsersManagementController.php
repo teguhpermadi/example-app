@@ -2,6 +2,7 @@
 
 namespace Modules\UsersManagement\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,7 +15,8 @@ class UsersManagementController extends Controller
      */
     public function index()
     {
-        return view('usersmanagement::index');
+        $data = User::all();
+        return view('usersmanagement::index')->with('data', $data);
     }
 
     /**
