@@ -37,7 +37,7 @@ class GenerateMenus
             ->prepend('<i class="fas fa-school"></i> <span>')
             ->link->attr(['class' => 'nav-link']);
             
-            $menu->add('Users Management', ['route'  => 'users.index'])
+            $menu->add('Users', ['route'  => 'users.index'])
             ->append('</span>')
             ->prepend('<i class="fas fa-users"></i> <span>')
             ->link->attr(['class' => 'nav-link']);

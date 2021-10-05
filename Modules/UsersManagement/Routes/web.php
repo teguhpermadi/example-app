@@ -14,5 +14,5 @@
 use Modules\UsersManagement\Http\Controllers\UsersManagementController;
 
 Route::prefix('users-management')->group(function() {
-    Route::get('/', [UsersManagementController::class, 'index'])->name('users.index');
+    Route::get('/', [UsersManagementController::class, 'index']);
 });

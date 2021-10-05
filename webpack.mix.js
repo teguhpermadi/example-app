@@ -11,8 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js');
+// mix.js('resources/js/app.js', 'public/js');
 mix.styles(['resources/js/app.js'], 'public/css/app.css').version();
+// webpack.mix.js
+mix.js("resources/js/app.js", "public/js")
+.postCss("resources/css/app.css", "public/css", [
+ require("tailwindcss"),
+]);
 
 mix.styles([
     'public/css/social-icons.css',
@@ -66,7 +71,3 @@ mix.babel('node_modules/sweetalert/dist/sweetalert.min.js',
 mix.babel('node_modules/izitoast/dist/js/iziToast.min.js',
     'public/assets/js/iziToast.min.js');
 
-    // webpack.mix.js
-mix.postCss("resources/css/app.css", "public/css", [
-  require("tailwindcss"),
-]);
