@@ -1,5 +1,6 @@
 {
     "Dashboard": true,
     "Sekolah": true,
-    "UsersManagement": true
+    "UsersManagement": true,
+    "Users": true
 }
