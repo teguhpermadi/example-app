@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             DistrictsSeeder::class,
             VillagesSeeder::class,
             // SekolahSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
         ]);
     }
 }

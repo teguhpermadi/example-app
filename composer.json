@@ -23,7 +23,8 @@
         "livewire/livewire": "^2.5",
         "mhmiton/laravel-modules-livewire": "^1.2",
         "nwidart/laravel-modules": "^8.2",
-        "spatie/laravel-permission": "^5.1"
+        "spatie/laravel-permission": "^5.1",
+        "webpatser/laravel-uuid": "3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

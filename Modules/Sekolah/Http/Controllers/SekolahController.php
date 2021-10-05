@@ -53,9 +53,9 @@ class SekolahController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit($uuid)
     {
-        $data = Sekolah::findOrFail($id);
+        $data = Sekolah::findOrFail($uuid);
         return view('sekolah::edit')->with('data', $data);
     }
 
@@ -65,7 +65,7 @@ class SekolahController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
         //
     }
@@ -75,9 +75,9 @@ class SekolahController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        $sekolah = Sekolah::findOrFail($id)->delete();
+        $sekolah = Sekolah::findOrFail($uuid)->delete();
         return redirect('sekolah');
     }
 }

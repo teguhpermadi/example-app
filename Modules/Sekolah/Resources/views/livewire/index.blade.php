@@ -62,8 +62,8 @@
                             <td>{{ $website }}</td>
                         </tr>
                 </table>
-                <a href="{{ route('sekolah.edit', $id_) }}" class="btn btn-warning float-left mr-3">Edit</a>
-                {{ Form::open(['route' => ['sekolah.destroy', $id_], 'method' => 'delete', 'class' => 'float-left']) }}
+                <a href="{{ route('sekolah.edit', $uuid) }}" class="btn btn-warning float-left mr-3">Edit</a>
+                {{ Form::open(['route' => ['sekolah.destroy', $uuid], 'method' => 'delete', 'class' => 'float-left']) }}
                 @csrf
                 <button class="btn btn-danger">Hapus</button>
                 {{ Form::close() }}

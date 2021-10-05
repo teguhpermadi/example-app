@@ -12,7 +12,7 @@ use Laravolt\Indonesia\Models\Village;
 
 class Form extends Component
 {
-    public $id_;
+    public $uuid;
     public $namasekolah, $npsn, $bentukpendidikan, $alamat;
     public $allProvinsi, $allDistrik, $allKecamatan, $allKelurahan, $kodepos;
     public $selectedProvinsi = null;
@@ -34,7 +34,7 @@ class Form extends Component
 
         if(!is_null($data))
         {
-            $this->id_ = $data->id;
+            $this->uuid = $data->uuid;
             $this->namasekolah = $data->namasekolah;
             $this->npsn = $data->npsn;
             $this->bentukpendidikan = $data->bentukpendidikan;
@@ -153,7 +153,7 @@ class Form extends Component
             'website' => $this->website,
         ];
         
-        Sekolah::updateOrCreate(['id' => $this->id_], $data);
+        Sekolah::updateOrCreate(['uuid' => $this->uuid], $data);
         
         // dd($data);
         return redirect()->route('sekolah.index');

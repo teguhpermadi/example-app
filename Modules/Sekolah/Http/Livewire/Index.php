@@ -6,13 +6,13 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $id_, $namasekolah, $npsn, $bentukpendidikan, $alamat, $kelurahan, $kecamatan, $distrik, $provinsi, $kodepos, $lat, $lng, $telp, $email, $website, $logo;
+    public $uuid, $namasekolah, $npsn, $bentukpendidikan, $alamat, $kelurahan, $kecamatan, $distrik, $provinsi, $kodepos, $lat, $lng, $telp, $email, $website, $logo;
 
     public function mount($data = null)
     {
         if(!is_null($data))
         {
-            $this->id_ = $data->id;
+            $this->uuid = $data->uuid;
             $this->namasekolah = $data->namasekolah;
             $this->npsn = $data->npsn;
             $this->bentukpendidikan = $data->bentukpendidikan;

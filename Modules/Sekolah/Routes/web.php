@@ -17,7 +17,7 @@ Route::prefix('sekolah')->group(function() {
     Route::get('/', [SekolahController::class, 'index'])->name('sekolah.index');
     Route::get('/create', 'SekolahController@create')->name('sekolah.create');
     Route::post('/store', [SekolahController::class, 'store'])->name('sekolah.store');
-    Route::get('/edit/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
-    Route::put('/update/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
-    Route::delete('/destory/{id}', [SekolahController::class, 'destroy'])->name('sekolah.destroy');
+    Route::get('/edit/{uuid}', [SekolahController::class, 'edit'])->name('sekolah.edit');
+    Route::put('/update/{uuid}', [SekolahController::class, 'update'])->name('sekolah.update');
+    Route::delete('/destory/{uuid}', [SekolahController::class, 'destroy'])->name('sekolah.destroy');
 });

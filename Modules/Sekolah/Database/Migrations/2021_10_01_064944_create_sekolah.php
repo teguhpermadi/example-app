@@ -14,7 +14,7 @@ class CreateSekolah extends Migration
     public function up()
     {
         Schema::create('sekolahs', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('uuid')->primary();
             $table->string('namasekolah');
             $table->string('npsn')->nullable();
             $table->string('bentukpendidikan')->nullable();
