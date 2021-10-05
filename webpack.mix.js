@@ -24,7 +24,7 @@ mix.styles([
 ], 'public/css/all.css').version();
 
 mix.js(
-    'public/js/scripts.js', 'public/js/scripts.min.js')
+        'public/js/scripts.js', 'public/js/scripts.min.js')
     .js('resources/assets/js/profile.js', 'public/assets/js/profile.js')
     .js('resources/assets/js/custom/custom.js', 'public/assets/js/custom/custom.js')
     .js('resources/assets/js/custom/custom-datatable.js', 'public/assets/js/custom/custom-datatable.js')
@@ -65,3 +65,8 @@ mix.babel('node_modules/sweetalert/dist/sweetalert.min.js',
     'public/assets/js/sweetalert.min.js');
 mix.babel('node_modules/izitoast/dist/js/iziToast.min.js',
     'public/assets/js/iziToast.min.js');
+
+    // webpack.mix.js
+mix.postCss("resources/css/app.css", "public/css", [
+  require("tailwindcss"),
+]);
