@@ -26,6 +26,20 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="username">Username:</label><span
+                                    class="text-danger">*</span>
+                            <input id="username" type="text"
+                                   class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                   name="username"
+                                   tabindex="1" placeholder="Enter username" value="{{ old('username') }}"
+                                   autofocus required>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('username') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="email">Email:</label><span
                                     class="text-danger">*</span>
                             <input id="email" type="email"
